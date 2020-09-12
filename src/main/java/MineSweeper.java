@@ -65,5 +65,26 @@ public class MineSweeper{
         isBomb(x, y);
     }
     
+     public boolean getGameOver() {
+        return gameOver;
+    }
+
+    public static void main(String[] args){
+        logger.info("CS-UTEC Software Engineering I");
+        Scanner in = new Scanner(System.in);
+        MineSweeper game = new MineSweeper(5);
+        game.printBoard();
+        int x, y;
+        while(!game.gameOver){
+            logger.info("Ingrese la coordenada x: "); x = in.nextInt();
+            logger.info("Ingrese la coordenada y: "); y = in.nextInt();
+            game.play(x, y);
+            game.printBoard();
+        }
+        logger.info("PERDISTE!!!");
+        game.printBoard();
+        in.close();
+    }
+    
     
 }
