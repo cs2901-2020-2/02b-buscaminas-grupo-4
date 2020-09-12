@@ -24,4 +24,26 @@ public class MineSweeper{
         board = newBoard;
     }
    
+    public void createGrid() {
+        for (int i = 0; i < n; i++) {
+            board.add(new ArrayList<Integer>());
+            flags.add(new ArrayList<Boolean>());
+            for (int j = 0; j < n; j++) {
+                board.get(i).add(j, 0);
+                flags.get(i).add(j, false);
+          }
+        }
+    }
+
+    public void printBoard() {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                boolean flag = flags.get(i).get(j);
+                System.out.print(flag || gameOver ? board.get(i).get(j) + " ": "X" + " ");
+            }
+            System.out.println();
+        }
+    }
+    
+    
 }
