@@ -39,9 +39,8 @@ public class MineSweeper {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 boolean flag = flags.get(i).get(j);
-                System.out.print(flag || gameOver ? board.get(i).get(j) + " ": "X" + " ");
+                logger.info(flag || gameOver ? board.get(i).get(j) + " ": "X" + " ");
             }
-            System.out.println();
         }
     }
     
