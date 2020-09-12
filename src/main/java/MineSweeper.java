@@ -45,5 +45,25 @@ public class MineSweeper{
         }
     }
     
+    public void insertMines() {
+        Random randomMine = new Random();
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < n; ++j) {
+                board.get(i).add(j, randomMine.nextBoolean() ? 1 : 0);
+            }                   
+        }
+    }
+
+    public void isBomb(int x, int y){
+        if (board.get(x).get(y) == 1){
+            gameOver = true;
+        }
+    }
+
+    public void play(int x, int y){
+        flags.get(x).add(y, true);
+        isBomb(x, y);
+    }
+    
     
 }
