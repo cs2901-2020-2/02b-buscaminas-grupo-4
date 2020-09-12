@@ -23,7 +23,6 @@ public class MineSweeper {
     public MineSweeper(ArrayList<ArrayList<Integer>> newBoard) {
         board = newBoard;
     }
-
     public void createGrid() {
         for (int i = 0; i < n; i++) {
             board.add(new ArrayList<Integer>());
