@@ -58,7 +58,7 @@ public class MineSweeperTest {
         for (int i = 0; i < n; ++i) {
             board.add(new ArrayList<Integer>());
             for (int j = 0; j < n; ++j) {
-                board.get(i).add(j, Integer.parseInt(lines.get(count++)));
+                board.get(i).add(Integer.parseInt(lines.get(count++)));
             }
         }
         return board;
