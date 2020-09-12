@@ -8,33 +8,60 @@ import java.util.List;
 import java.util.Scanner;
 
 @Test
-public class FizzBuzzTest {
+public class MineSweeperTest {
 
     public void testCase0() throws IOException {
-        generic(0);
+        genericMatrix(0);
     }
 
     public void testCase1() throws IOException {
-        generic(1);
-    }
-    public void testCase2() throws IOException {
-        generic(2);
-    }
-    public void testCase3() throws IOException {
-        generic(3);
+        genericMatrix(1);
     }
 
-    private void generic(int i) throws IOException {
-        int n = readInput(i);
-        List<String> expectedOutput = readOutput(i);
-        List<String> response = FizzBuzz.calculate(n);
-        Assert.assertEquals(response, expectedOutput);
+     public void testCase2() throws IOException {
+         genericMatrix(2);
+     }
+     public void testCase3() throws IOException {
+         genericMatrix(3);
+     }
+
+    private void genericMatrix(int n) throws IOException {
+        ArrayList<ArrayList<Integer>> newBoard = readInputMatrix(n);
+        ArrayList<ArrayList<Integer>> positions = readInputPositions(n);
+        MineSweeper ms = new MineSweeper(newBoard);
+        List<String> expectedOutput = readOutput(n);
+        for (int i = 0; i < expectedOutput.size(); ++i) { 
+            ms.isBomb(positions.get(i).get(0), positions.get(i).get(1));
+            Assert.assertEquals(expectedOutput.get(i).equals("1"), ms.gameOver);
+        }
     }
 
-    private int readInput(int testNumber){
+    private ArrayList<ArrayList<Integer>> readInputPositions(int testNumber){
         List<String> lines = readFile(testNumber, "input");
         int n = Integer.parseInt(lines.get(0));
-        return n;
+        ArrayList<ArrayList<Integer>> out = new ArrayList<ArrayList<Integer>>();
+        int count = 0;
+        for (int i = n * n + 1; i < lines.size(); i += 2) {
+            out.add(new ArrayList<Integer>());
+            out.get(count).add(0, Integer.parseInt(lines.get(i)));
+            out.get(count).add(1, Integer.parseInt(lines.get(i + 1)));
+            count += 1;
+        }
+        return out;
+    }
+
+    private ArrayList<ArrayList<Integer>> readInputMatrix(int testNumber){
+        List<String> lines = readFile(testNumber, "input");
+        int n = Integer.parseInt(lines.get(0));
+        int count = 1;
+        ArrayList<ArrayList<Integer>> board = new ArrayList<ArrayList<Integer>>();
+        for (int i = 0; i < n; ++i) {
+            board.add(new ArrayList<Integer>());
+            for (int j = 0; j < n; ++j) {
+                board.get(i).add(j, Integer.parseInt(lines.get(count++)));
+            }
+        }
+        return board;
     }
 
     private List<String> readOutput(int testNumber){

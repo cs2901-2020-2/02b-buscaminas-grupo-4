@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cs2901</groupId>
-    <artifactId>lab1.fizzBuzz</artifactId>
+    <artifactId>minesweeper</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.0.0-beta1</version>
+            <version>7.3.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -38,7 +38,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>FizzBuzz</mainClass>
+                            <mainClass>MineSweeper</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
