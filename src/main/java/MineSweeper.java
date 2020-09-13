@@ -1,13 +1,14 @@
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.Random;
 import java.util.Scanner;
 
 public class MineSweeper {
 
     public ArrayList<ArrayList<Integer>> board = new ArrayList<ArrayList<Integer>>();
     private ArrayList<ArrayList<Boolean>> flags = new ArrayList<ArrayList<Boolean>>();
+    private SecureRandom randomMine = new SecureRandom();
 
     private int n;
     boolean gameOver = false;
@@ -45,10 +46,9 @@ public class MineSweeper {
     }
     
     public void insertMines() {
-        Random randomMine = new Random();
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < n; ++j) {
-                board.get(i).add(j, randomMine.nextBoolean() ? 1 : 0);
+                board.get(i).add(j, this.randomMine.nextBoolean() ? 1 : 0);
             }                   
         }
     }
