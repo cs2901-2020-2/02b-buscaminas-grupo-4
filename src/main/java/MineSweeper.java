@@ -1,26 +1,28 @@
+package MineSweeper;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.Random;
 import java.util.Scanner;
 
 public class MineSweeper {
 
-    public ArrayList<ArrayList<Integer>> board = new ArrayList<ArrayList<Integer>>();
-    private ArrayList<ArrayList<Boolean>> flags = new ArrayList<ArrayList<Boolean>>();
+    private List<ArrayList<Integer>> board = new ArrayList<>();
+    private List<ArrayList<Boolean>> flags = new ArrayList<>();
+    private SecureRandom randomMine = new SecureRandom();
 
     private int n;
     boolean gameOver = false;
 
     static final Logger logger = Logger.getLogger(MineSweeper.class.getName());
 
-    public MineSweeper(int _n) {
-        n = _n;
+    public MineSweeper(int boardSize) {
+        n = boardSize;
         createGrid();
         insertMines();
     }
 
-    public MineSweeper(ArrayList<ArrayList<Integer>> newBoard) {
+    public MineSweeper(List<ArrayList<Integer>> newBoard) {
         board = newBoard;
     }
 
@@ -39,16 +41,19 @@ public class MineSweeper {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 boolean flag = flags.get(i).get(j);
-                logger.info(flag || gameOver ? board.get(i).get(j) + " ": "X" + " ");
+                if(flag || gameOver){
+                    logger.info(Integer.toString(board.get(i).get(j)) + " ");
+                }else{
+                    logger.info("X ");
+                }
             }
         }
     }
     
     public void insertMines() {
-        Random randomMine = new Random();
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < n; ++j) {
-                board.get(i).add(j, randomMine.nextBoolean() ? 1 : 0);
+                board.get(i).add(j, this.randomMine.nextBoolean() ? 1 : 0);
             }                   
         }
     }
@@ -70,18 +75,20 @@ public class MineSweeper {
 
     public static void main(String[] args){
         logger.info("CS-UTEC Software Engineering I");
-        Scanner in = new Scanner(System.in);
-        MineSweeper game = new MineSweeper(5);
+        Scanner input = new Scanner(System.in);
+        Integer boardSize = input.nextInt();
+        MineSweeper game = new MineSweeper(boardSize);
         game.printBoard();
-        int x, y;
+        int x;
+        int y;
         while(!game.gameOver){
-            logger.info("Ingrese la coordenada x: "); x = in.nextInt();
-            logger.info("Ingrese la coordenada y: "); y = in.nextInt();
+            logger.info("Ingrese la coordenada x: "); x = input.nextInt();
+            logger.info("Ingrese la coordenada y: "); y = input.nextInt();
             game.play(x, y);
             game.printBoard();
         }
         logger.info("PERDISTE!!!");
         game.printBoard();
-        in.close();
+        input.close();
     }
 }
