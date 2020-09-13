@@ -1,3 +1,4 @@
+package MineSweeper;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +7,8 @@ import java.util.Scanner;
 
 public class MineSweeper {
 
-    public ArrayList<ArrayList<Integer>> board = new ArrayList<ArrayList<Integer>>();
-    private ArrayList<ArrayList<Boolean>> flags = new ArrayList<ArrayList<Boolean>>();
+    private List<ArrayList<Integer>> board = new ArrayList<>();
+    private List<ArrayList<Boolean>> flags = new ArrayList<>();
     private SecureRandom randomMine = new SecureRandom();
 
     private int n;
@@ -15,13 +16,13 @@ public class MineSweeper {
 
     static final Logger logger = Logger.getLogger(MineSweeper.class.getName());
 
-    public MineSweeper(int _n) {
-        n = _n;
+    public MineSweeper(int boardSize) {
+        n = boardSize;
         createGrid();
         insertMines();
     }
 
-    public MineSweeper(ArrayList<ArrayList<Integer>> newBoard) {
+    public MineSweeper(List<ArrayList<Integer>> newBoard) {
         board = newBoard;
     }
 
@@ -73,7 +74,8 @@ public class MineSweeper {
         Scanner in = new Scanner(System.in);
         MineSweeper game = new MineSweeper(5);
         game.printBoard();
-        int x, y;
+        int x;
+        int y;
         while(!game.gameOver){
             logger.info("Ingrese la coordenada x: "); x = in.nextInt();
             logger.info("Ingrese la coordenada y: "); y = in.nextInt();
