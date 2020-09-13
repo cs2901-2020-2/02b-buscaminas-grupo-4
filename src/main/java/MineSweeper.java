@@ -1,4 +1,4 @@
-package MineSweeper;
+package main.java;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,11 +38,13 @@ public class MineSweeper {
     }
 
     public void printBoard() {
+        String boardValue = "";
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 boolean flag = flags.get(i).get(j);
                 if(flag || gameOver){
-                    logger.info(Integer.toString(board.get(i).get(j)) + " ");
+                    boardValue = Integer.toString(board.get(i).get(j)) + " ";
+                    logger.info(boardValue);
                 }else{
                     logger.info("X ");
                 }
