@@ -41,7 +41,11 @@ public class MineSweeper {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 boolean flag = flags.get(i).get(j);
-                logger.info(flag || gameOver ? board.get(i).get(j) + " ": "X" + " ");
+                if(flag || gameOver){
+                    logger.info(Integer.toString(board.get(i).get(j)) + " ");
+                }else{
+                    logger.info("X ");
+                }
             }
         }
     }
