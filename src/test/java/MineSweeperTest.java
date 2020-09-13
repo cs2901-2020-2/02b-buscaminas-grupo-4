@@ -1,4 +1,4 @@
-package MineSweeper;
+package main.java;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.io.IOException;
