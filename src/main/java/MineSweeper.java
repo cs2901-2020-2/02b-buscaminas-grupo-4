@@ -75,19 +75,20 @@ public class MineSweeper {
 
     public static void main(String[] args){
         logger.info("CS-UTEC Software Engineering I");
-        Scanner in = new Scanner(System.in);
-        MineSweeper game = new MineSweeper(5);
+        Scanner input = new Scanner(System.in);
+        Integer boardSize = input.nextInt();
+        MineSweeper game = new MineSweeper(boardSize);
         game.printBoard();
         int x;
         int y;
         while(!game.gameOver){
-            logger.info("Ingrese la coordenada x: "); x = in.nextInt();
-            logger.info("Ingrese la coordenada y: "); y = in.nextInt();
+            logger.info("Ingrese la coordenada x: "); x = input.nextInt();
+            logger.info("Ingrese la coordenada y: "); y = input.nextInt();
             game.play(x, y);
             game.printBoard();
         }
         logger.info("PERDISTE!!!");
         game.printBoard();
-        in.close();
+        input.close();
     }
 }
