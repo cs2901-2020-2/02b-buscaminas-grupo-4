@@ -24,6 +24,24 @@ public class MineSweeperTest {
      public void testCase3() throws IOException {
          genericMatrix(3);
      }
+     public void testCase4() throws IOException {
+         List<ArrayList<Integer>> board = new ArrayList<>();
+         MineSweeper ms = new MineSweeper(board);
+         Assert.assertEquals(board, ms.getBoard());
+     }
+     public void testCase5() throws IOException {
+        int n = 5;
+        MineSweeper ms = new MineSweeper(n);
+        List<ArrayList<Integer>> board = new ArrayList<>();
+        ms.createGrid();
+        Assert.assertEquals(10, ms.getBoard().size());
+     }
+     public void testCase6() throws IOException {
+        int n = 5;
+        MineSweeper ms = new MineSweeper(n);
+        ms.createGrid();
+        Assert.assertEquals(10, ms.getFlags().size());
+     }
 
     private void genericMatrix(int n) throws IOException {
         ArrayList<ArrayList<Integer>> newBoard = readInputMatrix(n);

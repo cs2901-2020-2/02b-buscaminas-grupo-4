@@ -26,6 +26,14 @@ public class MineSweeper {
         board = newBoard;
     }
 
+    public List<ArrayList<Integer>> getBoard(){
+        return board;
+    }
+
+    public List<ArrayList<Boolean>> getFlags(){
+        return flags;
+    }
+
     public void createGrid() {
         for (int i = 0; i < n; i++) {
             ArrayList<Integer> filaDeBoard = new ArrayList<>();
